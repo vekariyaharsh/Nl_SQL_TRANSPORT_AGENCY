@@ -1,0 +1,44 @@
+# Requirements for CSV to MySQL Import Script
+# Generated for Python 3.8+
+
+# Data manipulation
+pandas==2.1.4
+
+# MySQL database connectivity
+mysql-connector-python==8.2.0
+
+# SQL toolkit and ORM
+SQLAlchemy==2.0.25
+
+# Pure Python MySQL client (required by SQLAlchemy)
+PyMySQL==1.1.0
+
+# Optional: For better performance with large CSVs
+# numpy==1.24.3
+
+# Optional: For progress bars
+# tqdm==4.66.1
+
+# LangGraph and LangChain
+langgraph==0.2.50
+langchain==0.3.10
+langchain-openai==0.2.10
+langchain-community==0.3.10
+
+# Neo4j
+neo4j==5.26.0
+
+# OpenAI
+openai==1.57.2
+
+# Environment management
+python-dotenv==1.0.1
+
+# Tokenization
+tiktoken==0.8.0
+
+# Type hints and validation
+typing-extensions==4.12.2
+
+# Terminal colors (for test script)
+colorama==0.4.6
