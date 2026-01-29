@@ -1,0 +1,66 @@
+
+================================================================================
+🧪 Logistics SQL Pipeline - System Test
+================================================================================
+
+
+================================================================================
+1. Testing Configuration
+================================================================================
+❌ Configuration error: Configuration errors:
+  - NEO4J_PASSWORD is not set
+  - OPENAI_API_KEY is not set
+ℹ️  Please check your .env file
+
+================================================================================
+2. Testing MySQL Connection
+================================================================================
+❌ MySQL connection error: 2003 (HY000): Can't connect to MySQL server on 'localhost:3306' (111)
+❌ MySQL connection failed
+
+================================================================================
+3. Testing Neo4j Connection (for embeddings)
+================================================================================
+❌ Neo4j service unavailable: Couldn't connect to localhost:7687 (resolved to ()):
+Failed to establish connection to ResolvedIPv6Address(('::1', 7687, 0, 0)) (reason [Errno 111] Connection refused)
+Failed to establish connection to ResolvedIPv4Address(('127.0.0.1', 7687)) (reason [Errno 111] Connection refused)
+❌ Neo4j connection failed
+
+================================================================================
+4. Testing OpenAI API
+================================================================================
+❌ OpenAI error: Connection error.
+ℹ️  Check OPENAI_API_KEY in .env
+
+================================================================================
+5. Testing Logistics SQL Examples
+================================================================================
+✅ Loaded 15 logistics SQL examples
+ℹ️  Example: What was the revenue from billing party XYZ from Jan 2021 to Dec 2021?
+
+================================================================================
+6. Testing Pipeline Initialization
+================================================================================
+ℹ️  Importing app_sql module...
+✅ app_sql module imported successfully
+ℹ️  Note: Full pipeline initialization will happen when you run the app
+
+================================================================================
+Test Summary
+================================================================================
+Configuration........................... ❌ FAILED
+MySQL Connection........................ ❌ FAILED
+Neo4j Connection........................ ❌ FAILED
+OpenAI API.............................. ❌ FAILED
+SQL Examples............................ ✅ PASSED
+Pipeline Init........................... ✅ PASSED
+
+Total: 2/6 tests passed
+
+⚠️  Some tests failed. Please fix the issues above.
+
+Common fixes:
+  • Configuration: Check .env file
+  • MySQL: Verify database is running and credentials are correct
+  • Neo4j: Verify Neo4j is running
+  • OpenAI: Check API key is valid

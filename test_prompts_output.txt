@@ -1,0 +1,8 @@
+...
+----------------------------------------------------------------------
+Ran 3 tests in 0.004s
+
+OK
+✅ QueryCorrectorNode prompt test passed
+✅ NLToSQLNode prompt test passed
+✅ QueryValidatorNode prompt test passed
