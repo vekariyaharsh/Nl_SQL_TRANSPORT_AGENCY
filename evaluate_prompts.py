@@ -50,12 +50,25 @@ Columns:
     corr_node = QueryCorrectorNode()
 
     test_cases = [
-        "Top 5 billing parties by revenue in 2022",
-        "How many consignments were handled in March 2023?",
-        "Total profit for route 'Mumbai to Delhi'"
+        {
+            "question": "Top 5 billing parties by revenue in 2022",
+            "query": "SELECT Billing_Party, SUM(Total_Freight) FROM lr_dump GROUP BY Billing_Party LIMIT 5",
+            "validation": "VALIDATION: FAIL\nISSUES:\n- Missing ORDER BY for 'Top 5'"
+        },
+        {
+            "question": "How many consignments were handled in March 2023?",
+            "query": "SELECT COUNT(*) FROM lr_dump WHERE CN_Date LIKE '2023-03%'",
+            "validation": "VALIDATION: FAIL\nISSUES:\n- Date format might be inconsistent with database"
+        },
+        {
+            "question": "Total profit for route 'Mumbai to Delhi'",
+            "query": "SELECT SUM(LR_Profit) FROM lr_dump WHERE Route = 'Mumbai to Delhi'",
+            "validation": "VALIDATION: FAIL\nISSUES:\n- Column 'Route' does not exist in lr_dump"
+        }
     ]
 
-    for question in test_cases:
+    for case in test_cases:
+        question = case["question"]
         print_banner(f"SCENARIO: {question}")
 
         # 1. Generation Prompt
@@ -65,14 +78,14 @@ Columns:
         print(gen_prompt[:500] + "...")
 
         # 2. Validation Prompt
-        state["generated_query"] = "SELECT Billing_Party, SUM(Total_Freight) FROM lr_dump GROUP BY Billing_Party LIMIT 5"
+        state["generated_query"] = case["query"]
         state["schema_info"] = mock_loader.format_schema_for_llm()
         val_prompt = val_node._build_validation_prompt(state)
         print("\n--- 2. VALIDATION PROMPT ---")
         print(val_prompt[:500] + "...")
 
         # 3. Correction Prompt
-        state["validation_result"] = "VALIDATION: FAIL\nISSUES:\n- Missing ORDER BY for 'Top 5'"
+        state["validation_result"] = case["validation"]
         corr_prompt = corr_node._build_correction_prompt(state)
         print("\n--- 3. CORRECTION PROMPT ---")
         print(corr_prompt[:500] + "...")
