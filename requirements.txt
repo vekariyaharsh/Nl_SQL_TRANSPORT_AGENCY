@@ -1,0 +1,40 @@
+# Requirements for NL-to-SQL Pipeline
+# Data manipulation
+pandas==2.1.4
+
+# MySQL database connectivity
+mysql-connector-python==8.2.0
+
+# SQL toolkit and ORM
+SQLAlchemy==2.0.25
+
+# Pure Python MySQL client
+PyMySQL==1.1.0
+
+# LangGraph and LangChain
+langgraph==0.2.50
+langchain==0.3.10
+langchain-openai==0.2.10
+langchain-community==0.3.10
+
+# OpenAI
+openai==1.57.2
+
+# Environment management
+python-dotenv==1.0.1
+
+# Tokenization
+tiktoken==0.8.0
+
+# Type hints and validation
+typing-extensions==4.12.2
+pydantic>=2.7.4
+pydantic-settings>=2.1.0
+
+# Web and Slack
+flask>=3.0.0
+slack-sdk>=3.26.1
+
+# Utilities
+colorama==0.4.6
+pytest==9.0.2
